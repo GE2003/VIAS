@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_marginTop="30dp"
+        android:orientation="vertical"
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.skydoves.elasticviews.ElasticCardView
+            android:layout_gravity="center"
+            android:id="@+id/take_photo_bt"
+            android:layout_marginTop="20dp"
+            app:cardCornerRadius="10dp"
+            app:cardView_duration="250"
+            app:cardElevation="20dp"
+            app:cardBackgroundColor="@color/grey"
+            android:layout_width="300dp"
+            android:layout_height="350dp">
+        <ImageView
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="100dp"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:src="@drawable/ic_monochrome_photos"/>
+    </com.skydoves.elasticviews.ElasticCardView>
+    <com.skydoves.elasticviews.ElasticCardView
+            android:id="@+id/search_history_bt"
+            android:layout_marginTop="40dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="20dp"
+            app:cardView_duration="250"
+            app:cardBackgroundColor="@color/teal_200"
+            android:layout_width="300dp"
+            android:layout_gravity="center"
+            android:layout_height="150dp">
+        <ImageView
+                android:id="@+id/img_show"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:src="@drawable/ic_history"/>
+    </com.skydoves.elasticviews.ElasticCardView>
+
+</LinearLayout>

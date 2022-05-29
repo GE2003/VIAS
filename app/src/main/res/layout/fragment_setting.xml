@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:layout_height="match_parent">
+    <RelativeLayout
+            android:padding="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="设置"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+   <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:layout_centerVertical="true"
+                android:text="色盲模式"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+        </TextView>
+        <com.suke.widget.SwitchButton
+      android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+    </RelativeLayout>
+   </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView
+                android:layout_centerVertical="true"
+                        android:text="点击提示音"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                </TextView>
+                <com.suke.widget.SwitchButton
+                        android:layout_alignParentRight="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+        <com.skydoves.elasticviews.ElasticCardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:layout_centerVertical="true"
+                        android:text="清除缓存"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                </TextView>
+<ImageView
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+           android:src="@drawable/ic_arrow_forward_ios">
+
+</ImageView>
+            </RelativeLayout>
+        </com.skydoves.elasticviews.ElasticCardView>
+    <com.skydoves.elasticviews.ElasticCardView
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <TextView
+                    android:layout_centerVertical="true"
+                    android:text="用户反馈"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+            </TextView>
+            <ImageView
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_forward_ios">
+
+            </ImageView>
+        </RelativeLayout>
+    </com.skydoves.elasticviews.ElasticCardView>
+
+        <com.skydoves.elasticviews.ElasticCardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:layout_centerVertical="true"
+                        android:text="检查版本"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                </TextView>
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward_ios">
+
+                </ImageView>
+            </RelativeLayout>
+        </com.skydoves.elasticviews.ElasticCardView>
+        <com.skydoves.elasticviews.ElasticCardView
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+            <RelativeLayout android:layout_width="match_parent" android:layout_height="match_parent">
+                <TextView
+                        android:layout_centerVertical="true"
+                        android:text="关于我们"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                </TextView>
+                <ImageView
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_arrow_forward_ios">
+
+                </ImageView>
+            </RelativeLayout>
+        </com.skydoves.elasticviews.ElasticCardView>
+        <com.skydoves.elasticviews.ElasticButton
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:text="退出登录"
+                android:id="@+id/exit_app_btn"
+                app:button_cornerRadius="20dp"
+                android:background="@color/teal_200"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content">
+
+        </com.skydoves.elasticviews.ElasticButton>
+    </LinearLayout>
+</LinearLayout>

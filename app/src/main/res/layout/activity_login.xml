@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:background="@drawable/login_bg2"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="300dp"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/lottie_animation"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                app:lottie_rawRes="@raw/login_animation"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                android:layout_height="200dp">
+
+        </com.airbnb.lottie.LottieAnimationView>
+        <com.rengwuxian.materialedittext.MaterialEditText
+                android:layout_marginTop="20dp"
+                android:id="@+id/number_input"
+                android:hint="手机号"
+                app:met_baseColor="@color/white"
+                android:layout_width="match_parent"
+                app:met_floatingLabel="highlight"
+                app:met_underlineColor="@color/ghostwhite"
+                app:met_floatingLabelText="手机号"
+                app:met_floatingLabelTextSize="12sp"
+                app:met_floatingLabelTextColor="@color/ghostwhite"
+                app:met_iconLeft="@drawable/ic_phone_input"
+
+                android:layout_height="wrap_content">
+
+        </com.rengwuxian.materialedittext.MaterialEditText>
+
+        <com.rengwuxian.materialedittext.MaterialEditText
+                android:id="@+id/password_input"
+                app:met_floatingLabelTextColor="@color/ghostwhite"
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                app:met_baseColor="@color/white"
+                app:met_floatingLabel="highlight"
+                app:met_floatingLabelText="密码"
+
+                android:hint="密码"
+                app:met_floatingLabelTextSize="12sp"
+                app:met_underlineColor="@color/ghostwhite"
+                app:met_iconLeft="@drawable/ic_password_input"
+                android:layout_height="wrap_content">
+        </com.rengwuxian.materialedittext.MaterialEditText>
+        <com.skydoves.elasticviews.ElasticButton
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:id="@+id/sign_in_btn"
+                app:button_cornerRadius="20sp"
+                android:layout_marginTop="40dp"
+                android:background="@color/teal_200"
+                android:text="登        录"
+                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content">
+        </com.skydoves.elasticviews.ElasticButton>
+        <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/correct_aim"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                app:lottie_rawRes="@raw/success2"
+                app:lottie_autoPlay="false"
+                android:layout_height="100dp">
+
+        </com.airbnb.lottie.LottieAnimationView>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+

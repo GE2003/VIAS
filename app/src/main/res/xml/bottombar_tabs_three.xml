@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+
+           <!-- barColorWhenSelected="#FF0000"-->
+    />
+
+       <!-- barColorWhenSelected="#D2691E"/>-->
+    <tab
+            id="@+id/tab_photo"
+            icon="@drawable/ic_photo_camera"
+        />
+
+    <tab
+            id="@+id/tab_mic"
+            icon="@drawable/ic_mic"
+    />
+    <tab
+            id="@+id/tab_setting"
+            icon="@drawable/ic_settings"
+    />
+   <!--         barColorWhenSelected="#00BFFF"/>-->
+</tabs>

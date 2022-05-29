@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+
+        android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           app:cardBackgroundColor="@color/oldlace"
+           android:layout_height="wrap_content">
+       <RelativeLayout
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+
+       </RelativeLayout>
+   </androidx.cardview.widget.CardView>
+    <LinearLayout android:layout_width="match_parent"
+                  android:orientation="vertical"
+                  android:layout_height="wrap_content">
+
+      <androidx.cardview.widget.CardView
+              android:layout_width="match_parent"
+              android:layout_gravity="center"
+              app:cardBackgroundColor="@color/oldlace"
+              app:cardCornerRadius="20dp"
+              android:padding="30dp"
+              android:layout_height="match_parent">
+          <TextView
+                  android:id="@+id/news_title"
+                  android:padding="10dp"
+                  android:textSize="30sp"
+                  android:text="摩托罗拉：GPON在FTTH中比EPON更有优势"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+          </TextView>
+      </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+    <ScrollView
+
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/news_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:text="作 者：鲁义轩
+　　
+　　据FloydWagoner介绍，凭借在全球FTTH领域积累的经验"/>
+    </ScrollView>
+   <androidx.cardview.widget.CardView
+           android:layout_width="match_parent"
+           app:cardBackgroundColor="@color/oldlace"
+           android:layout_height="wrap_content">
+       <LinearLayout
+               android:orientation="horizontal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+           <com.varunest.sparkbutton.SparkButton
+                   android:id="@+id/thumb_bt"
+                   android:layout_marginTop="5dp"
+
+                   app:sparkbutton_activeImage="@drawable/press_thumb_up"
+                   app:sparkbutton_inActiveImage="@drawable/ic_thumb_up"
+                   app:sparkbutton_iconSize="35dp"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="60dp"/>
+           <com.varunest.sparkbutton.SparkButton
+                   android:id="@+id/speak_btn"
+                   app:sparkbutton_activeImage="@drawable/press_headset"
+                   app:sparkbutton_inActiveImage="@drawable/ic_headset"
+                   app:sparkbutton_iconSize="35dp"
+                   android:layout_marginTop="5dp"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="60dp"/>
+           <com.airbnb.lottie.LottieAnimationView
+                   android:layout_width="0dp"
+                   android:id="@+id/speak_view"
+                   app:lottie_loop="true"
+                   android:layout_weight="1"
+                   app:lottie_autoPlay="true"
+                   app:lottie_rawRes="@raw/hello"
+                   android:layout_marginTop="5dp"
+                   android:layout_height="60dp">
+           </com.airbnb.lottie.LottieAnimationView>
+           <com.varunest.sparkbutton.SparkButton
+                   android:id="@+id/collect_bt"
+                   android:layout_marginTop="5dp"
+                   android:layout_toLeftOf="@id/thumb_bt"
+                   app:sparkbutton_activeImage="@drawable/press_stars"
+                   app:sparkbutton_inActiveImage="@drawable/ic_stars"
+                   app:sparkbutton_iconSize="35dp"
+                   android:layout_width="0dp"
+                   android:layout_weight="1"
+                   android:layout_height="60dp"/>
+       </LinearLayout>
+   </androidx.cardview.widget.CardView>
+
+</LinearLayout>
