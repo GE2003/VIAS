@@ -6,12 +6,14 @@
 <com.skydoves.elasticviews.ElasticCardView
         android:layout_width="match_parent"
         app:cardCornerRadius="10dp"
+        android:id="@+id/elect_card_view"
         app:cardBackgroundColor="@color/teal_200"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp">
     <TextView
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="25sp"
+            android:id="@+id/News_title_tv"
             android:gravity="center"
             android:text="摩托罗拉：GPON在FTTH中比EPON更有优势"
             android:layout_width="match_parent"

@@ -32,7 +32,9 @@ public class NewsPagerAdapter extends FragmentPagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
+        Log.d(TAG,"Fragment getItem----"+position);
         Category category = DataBeans.get(position);
+        Log.d(TAG,"Fragment getItem  title----"+category.getTitle());
    NewsContentFragment newsContentFragment = NewsContentFragment.newInstance(category);
         return newsContentFragment;
     }

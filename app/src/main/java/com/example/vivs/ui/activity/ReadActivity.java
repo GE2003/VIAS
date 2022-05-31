@@ -2,6 +2,7 @@ package com.example.vivs.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeechService;
@@ -26,6 +27,8 @@ import java.util.Locale;
 public class ReadActivity extends BaseActivity implements TextToSpeech.OnInitListener {
     private static final ReadActivity ourInstance =new ReadActivity();
     private TtsManager ttsManager;
+    private String Stitle;
+    private String Scontent;
 
     public  static  ReadActivity getInstance(){return  ourInstance;}
      @SuppressLint("NonConstantResourceId")
@@ -79,7 +82,13 @@ public LottieAnimationView animationView;
     protected void initview() {
         textToSpeech=new TextToSpeech(ReadActivity.this,ReadActivity.this);
        animationView.setVisibility(View.GONE);
-
+        Intent intent = this.getIntent();
+        Stitle = intent.getStringExtra("title");
+        Scontent = intent.getStringExtra("content");
+        if (Stitle!=null&&Scontent!=null){
+        title.setText(Stitle);
+        content.setText(Scontent);
+        }
     }
     public void setOnClickListener() {
         speak.setOnClickListener(new View.OnClickListener() {

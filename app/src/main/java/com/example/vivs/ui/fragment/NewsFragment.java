@@ -15,6 +15,8 @@ import com.example.vivs.Base.BaseFragment;
 
 import com.example.vivs.R;
 import com.example.vivs.model.domin.Category;
+import com.example.vivs.presenter.Interface.INewsPagerPresenter;
+import com.example.vivs.presenter.impl.NewsPagerPresenterImpl;
 import com.example.vivs.presenter.impl.NewsPresenterImpl;
 import com.example.vivs.ui.adapter.NewsPagerAdapter;
 import com.example.vivs.utils.Constants;
@@ -41,6 +43,7 @@ public class NewsFragment extends BaseFragment implements INewsCallback {
     public Context Newscontext;
     private MagicIndicator Indicator;
     private ViewPager viewpager;
+    private INewsPagerPresenter newsPagerPresenter;
     public FragmentContainerHelper fragmentContainerHelper ;
     @Override
     protected int getResId() {
@@ -58,6 +61,7 @@ public class NewsFragment extends BaseFragment implements INewsCallback {
     @Override
     protected void initPresenter() {
         newsPresenter = new NewsPresenterImpl();
+        newsPagerPresenter = NewsPagerPresenterImpl.getInstance();
         newsPresenter.registerViewCallback(this);
     }
 
@@ -94,7 +98,25 @@ public class NewsFragment extends BaseFragment implements INewsCallback {
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Log.d(TAG,"index-----"+index);
+                     //   newsPagerPresenter.getTitleByNewsModuleId(index+1);
                         viewpager.setCurrentItem(index);
+              /*          viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                            @Override
+                            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                            }
+
+                            @Override
+                            public void onPageSelected(int position) {
+                                newsPagerPresenter.getTitleByNewsModuleId(position+1);
+
+                            }
+
+                            @Override
+                            public void onPageScrollStateChanged(int state) {
+
+                            }
+                        });*/
                     }
                 });
                 return simplePagerTitleView;
@@ -108,6 +130,7 @@ public class NewsFragment extends BaseFragment implements INewsCallback {
                 indicator.setYOffset(UIUtil.dip2px(context, 49));
                 indicator.setLineHeight(UIUtil.dip2px(context, 3));
                 indicator.setColors(getResources().getColor(R.color.teal_200));
+
                 return indicator;
             }
         });
@@ -131,7 +154,6 @@ public class NewsFragment extends BaseFragment implements INewsCallback {
     public void onCategoriesLoaded(List<Category> category) {
         setUpState(State.SUCCESS);
         Log.d(TAG,"Getcategories----"+category);
-        Log.d(TAG,"不空---------"+newsPagerAdapter);
         if (newsPagerAdapter!=null){
             newsPagerAdapter.setCategories(category);
         }
@@ -139,16 +161,16 @@ public class NewsFragment extends BaseFragment implements INewsCallback {
 
     @Override
     public void onNetWorkError() {
-
+       setUpState(State.ERROR);
     }
 
     @Override
     public void onLoading() {
-
+       setUpState(State.LOADING);
     }
 
     @Override
     public void onEmpty() {
-
+         setUpState(State.EMPTY);
     }
 }

@@ -12,7 +12,8 @@ import java.util.Map;
 
 public class NewsPresenterImpl implements IHomePresenter {
 
-private INewsCallback mCallback;
+    private static final String TAG = "NewsPresenterImpl";
+    private INewsCallback mCallback;
     @Override
     public void registerViewCallback(INewsCallback callback) {
 
@@ -31,24 +32,25 @@ private INewsCallback mCallback;
         }
         List<Category> data = new ArrayList<>();
         Map<Integer,String> map = new HashMap<>();
-        map.put(1,"推荐");
-        map.put(2,"热门");
-        map.put(3,"娱乐");
-        map.put(5,"社会");
-        map.put(6,"科技");
-        map.put(7,"房产");
-        map.put(8,"财经");
-        map.put(10,"时尚");
-        map.put(11,"游戏");
-        map.put(12,"体育");
-        for (int i = 1; i <=12; i++) {
+        Log.d(TAG,"走一次---------------------");
+        map.put(1,"社会");
+        map.put(2,"科技");
+        map.put(3,"房产");
+        map.put(4,"财经");
+        map.put(5,"时尚");
+        map.put(6,"游戏");
+        map.put(7,"体育");
+        map.put(8,"时政");
+        map.put(9,"教育");
+        map.put(10,"娱乐");
+        for (int i = 1; i <=10; i++) {
           Category category = new Category();
             category.setId(i);
             category.setTitle(map.get(i));
             data.add(category);
         }
      mCallback.onCategoriesLoaded(data);
-   //     Log.d("NewsPresenterIMPL","databen---------------"+data);
+
 
     }
 }

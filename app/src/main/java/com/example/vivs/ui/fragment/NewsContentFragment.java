@@ -3,10 +3,16 @@ package com.example.vivs.ui.fragment;
 
 import android.content.Context;
 
+import android.content.Intent;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import butterknife.BindView;
 import com.example.vivs.Base.BaseFragment;
 import com.example.vivs.R;
 import com.example.vivs.model.domin.Category;
@@ -15,22 +21,25 @@ import com.example.vivs.presenter.Interface.INewsPagerPresenter;
 
 import com.example.vivs.presenter.impl.NewsPagerPresenterImpl;
 
+import com.example.vivs.ui.activity.ReadActivity;
+import com.example.vivs.ui.adapter.NewsPagerContentAdapter;
 import com.example.vivs.view.Interface.INewsPagerCallBack;
+import org.jetbrains.annotations.NotNull;
 
 
 import java.util.List;
 
 
-public class NewsContentFragment extends BaseFragment implements  INewsPagerCallBack {
+public class NewsContentFragment extends BaseFragment implements INewsPagerCallBack, NewsPagerContentAdapter.OnListItemClickListener {
   public Context Newscontext;
     private static final String TAG = "NewsContentFragment";
     private INewsPagerPresenter newsPagerPresenter;
-
+  private NewsPagerContentAdapter newsPagerContentAdapter;
     public  static  String Res;
-
     private String title;
     private int id;
-
+@BindView(R.id.news_content_list)
+public RecyclerView NewsContentList;
     public static NewsContentFragment newInstance(Category category){
     NewsContentFragment newsContentFragment = new NewsContentFragment();
     Bundle bundle = new Bundle();
@@ -90,16 +99,27 @@ public  void setSelectTabByres(String res){
 
     @Override
     protected void initview(View view) {
+            setUpState(State.SUCCESS);
+          NewsContentList.setLayoutManager(new LinearLayoutManager(getContext()));
+          NewsContentList.addItemDecoration(new RecyclerView.ItemDecoration() {
+              @Override
+              public void getItemOffsets(@NonNull @NotNull Rect outRect, @NonNull @NotNull View view, @NonNull @NotNull RecyclerView parent, @NonNull @NotNull RecyclerView.State state) {
+                  outRect.top=55;
+                  outRect.bottom=55;
+              }
+          });
+          newsPagerContentAdapter=new NewsPagerContentAdapter();
+
+          NewsContentList.setAdapter(newsPagerContentAdapter);
+
+
 
     }
 
-
-
-
-
     @Override
     protected void onClicklistener() {
-
+        Log.d(TAG,"点击事件---------");
+        newsPagerContentAdapter.setOnListItemClickListener(this);
     }
 
     @Override
@@ -114,9 +134,11 @@ public  void setSelectTabByres(String res){
  if (arguments!=null){
      title = arguments.getString("title");
      id = arguments.getInt("ID");
+     Log.d(TAG,"get Title-----------"+title);
+     Log.d(TAG,"get id-----------"+id);
  }
         if (newsPagerPresenter!=null){
-        Log.d(TAG,"load data-----");
+            //todo
         newsPagerPresenter.getTitleByNewsModuleId(id);
     }
     }
@@ -128,7 +150,8 @@ public  void setSelectTabByres(String res){
 
     @Override
     public void onNewsContentLoaded(List<news> records, int NewsModuleID) {
-
+           setUpState(State.SUCCESS);
+           newsPagerContentAdapter.setDATA(records);
     }
 
 
@@ -136,23 +159,26 @@ public  void setSelectTabByres(String res){
 
 
     @Override
-    public int getNewsId() {
-        return 0;
+    public int getCategoriessId() {
+        return id;
     }
 
     @Override
     public void onLoading(int NewsModuleId) {
 
+     setUpState(State.LOADING);
     }
 
     @Override
     public void onError(int NewsModuleId) {
 
+setUpState(State.ERROR);
     }
 
     @Override
     public void onEmpty(int NewsModuleId) {
 
+ setUpState(State.EMPTY);
     }
 
     @Override
@@ -168,5 +194,15 @@ public  void setSelectTabByres(String res){
     @Override
     public void onLoaderMoreSuccess() {
 
+    }
+
+    @Override
+    public void onItemClick(news item) {
+        //列表内容被点击
+        Log.d(TAG,"On item click----------"+item.getTitle());
+        Intent intent =new Intent(getActivity(), ReadActivity.class);
+        intent.putExtra("title",item.getTitle());
+        intent.putExtra("content",item.getContent());
+        startActivity(intent);
     }
 }
