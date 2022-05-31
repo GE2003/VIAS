@@ -1,10 +1,8 @@
 package com.example.vivs.model.domin;
 
-import java.util.List;
-
-public class NewsData {
+public class DeleteNewMsg {
     private int code;
-    private data data;
+    private news news;
     private String message;
     private boolean ok;
 
@@ -12,18 +10,10 @@ public class NewsData {
     public String toString() {
         return "NewsData{" +
                 "code=" + code +
-                ", data=" + data +
+                ", data=" + news +
                 ", message='" + message + '\'' +
                 ", ok=" + ok +
                 '}';
-    }
-
-    public com.example.vivs.model.domin.data getData() {
-        return data;
-    }
-
-    public void setData(com.example.vivs.model.domin.data data) {
-        this.data = data;
     }
 
     public int getCode() {
@@ -34,6 +24,13 @@ public class NewsData {
         this.code = code;
     }
 
+    public news getData() {
+        return news;
+    }
+
+    public void setData(news news) {
+        this.news = news;
+    }
 
     public String getMessage() {
         return message;

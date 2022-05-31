@@ -1,9 +1,13 @@
 package com.example.vivs.view.Interface;
 
+import com.example.vivs.model.domin.news;
+
+import java.util.List;
+
 public interface INewsPagerCallBack {
     //这个接口的设计是为了拿到数据后的UI更新
     void  onTitleLoaded();//传一个标题的集合进去
-    void  onNewsContentLoaded(String title);//获取新闻的内容
+    void  onNewsContentLoaded(List<news> records,int NewsModuleID);//获取新闻的内容
     int getNewsId();
     void  onLoading(int NewsModuleId);
     void  onError(int NewsModuleId);

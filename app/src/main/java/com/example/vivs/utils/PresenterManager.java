@@ -1,12 +1,12 @@
 package com.example.vivs.utils;
 
-import com.example.vivs.presenter.impl.HomePresenterImpl;
+import com.example.vivs.presenter.impl.NewsPresenterImpl;
 
 public class PresenterManager {
     private static final PresenterManager ourInstance = new PresenterManager();
-    private final HomePresenterImpl homePresenter;
+    private final NewsPresenterImpl homePresenter;
 
-    public HomePresenterImpl getHomePresenter() {
+    public NewsPresenterImpl getHomePresenter() {
         return homePresenter;
     }
 
@@ -15,6 +15,6 @@ public class PresenterManager {
     }
     private PresenterManager(){
         //在这里创建presenter
-        homePresenter = new HomePresenterImpl();
+        homePresenter = new NewsPresenterImpl();
     }
 }

@@ -16,7 +16,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.example.vivs.R;
 public abstract class BaseFragment extends Fragment {
     private static final String TAG = "BaseFragment";
@@ -27,6 +29,8 @@ public abstract class BaseFragment extends Fragment {
     private View mErrorView;
     private View mEmptyView;
     private FrameLayout mBaseContainer;
+    private Unbinder unbinder;
+
     public enum State{
         NONE,LOADING,SUCCESS,ERROR,EMPTY
     }
@@ -37,14 +41,13 @@ public abstract class BaseFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View rootview = inflater.inflate(R.layout.base_layout, container,false);
-
         mBaseContainer=rootview.findViewById(R.id.base_layout_container);
       getFragmentContext(BaseFragment.this.getActivity());
         LoadStatesView(inflater,container);
-        ButterKnife.bind(this,rootview);
-        LoadData();
+         unbinder = ButterKnife.bind(this, rootview);
          initview(rootview);
-          initPresenter();
+        initPresenter();
+        LoadData();
         onClicklistener();
         return rootview;
     }
@@ -142,7 +145,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-
+        unbinder.unbind();
         release();
     }
 }

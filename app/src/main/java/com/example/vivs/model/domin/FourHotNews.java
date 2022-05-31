@@ -2,7 +2,7 @@ package com.example.vivs.model.domin;
 
 public class FourHotNews {
     private int code;
-    private Data data;
+    private news news;
     private String message;
     private boolean ok;
 
@@ -10,7 +10,7 @@ public class FourHotNews {
     public String toString() {
         return "FourHotNews{" +
                 "code=" + code +
-                ", data=" + data +
+                ", data=" + news +
                 ", message='" + message + '\'' +
                 ", ok=" + ok +
                 '}';
@@ -24,12 +24,12 @@ public class FourHotNews {
         this.code = code;
     }
 
-    public Data getData() {
-        return data;
+    public news getData() {
+        return news;
     }
 
-    public void setData(Data data) {
-        this.data = data;
+    public void setData(news news) {
+        this.news = news;
     }
 
     public String getMessage() {

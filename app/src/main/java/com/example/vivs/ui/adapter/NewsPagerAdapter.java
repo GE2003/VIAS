@@ -6,15 +6,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import com.example.vivs.ui.fragment.NewsPageFragment;
+import com.example.vivs.model.domin.Category;
+import com.example.vivs.ui.fragment.NewsContentFragment;
+import com.example.vivs.ui.fragment.NewsFragment;
 
+import java.nio.channels.Pipe;
 import java.util.ArrayList;
 import java.util.List;
 
 public class NewsPagerAdapter extends FragmentPagerAdapter {
-
-     List<Fragment> list = new ArrayList<>();
-    private String[] titles = {"推荐", "热门", "娱乐","社会","科技","房产","财经","时尚","游戏","体育","时政","教育","娱乐"};
+    private static final String TAG = "NewsPagerAdapter";
+    private List<Category> DataBeans = new ArrayList<>();
     public NewsPagerAdapter(@NonNull FragmentManager fm) {
 
         super(fm,BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
@@ -23,27 +25,30 @@ public class NewsPagerAdapter extends FragmentPagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-return titles[position];
+         Log.d(TAG,"Title------------"+DataBeans.get(position).getTitle());
+        return DataBeans.get(position).getTitle();
     }
 
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return list.get(position);
+        Category category = DataBeans.get(position);
+   NewsContentFragment newsContentFragment = NewsContentFragment.newInstance(category);
+        return newsContentFragment;
     }
 
     @Override
     public int getCount() {
-        Log.d("taasdasd","list size--------"+list.size());
-        return list.size();
+
+        return DataBeans.size();
     }
 
 
-    public void setData() {
-        for (int i = 0; i < titles.length; i++) {
-
-      list.add(new NewsPageFragment());
-        }
+    public void setCategories(List<Category> category){
+        DataBeans.clear();
+        Log.d(TAG,"News setCategories---"+category.size());
+        this.DataBeans.addAll(category);
+        notifyDataSetChanged();
 
     }
 }

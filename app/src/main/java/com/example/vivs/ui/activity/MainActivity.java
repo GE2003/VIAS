@@ -3,12 +3,9 @@ package com.example.vivs.ui.activity;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ActivityOptions;
-import android.content.BroadcastReceiver;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -74,9 +71,10 @@ public class MainActivity extends AppCompatActivity  {
             Manifest.permission.READ_EXTERNAL_STORAGE};
     private SettingFragment settingFragment;
     private ReadHistoryFragment readHistoryFragment;
-    private NewsFragment newsFragment;
+    private NewsContentFragment newsContentFragment;
     private String res;
     private LocalReceiver instance;
+    private NewsFragment newsFragment;
 
 
     @Override
@@ -104,8 +102,8 @@ public class MainActivity extends AppCompatActivity  {
        }
 
         else if (Constants.NewsKeyWords.contains(res)) {
-            newsFragment = NewsFragment.getNewsFragment(res);
-           // switchFragment(newsFragment);
+            newsContentFragment = NewsContentFragment.getNewsFragment(res);
+            switchFragment(newsFragment);
         }
         else if (Constants.ReadHistoryKeyWords.contains(res)){
             switchFragment(readHistoryFragment);
@@ -234,7 +232,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
     private void initFragment() {
-
+        newsFragment = new NewsFragment();
         personalFragment = new PersonalFragment();
         favoriteFragment = new FavoriteFragment();
         settingFragment = new SettingFragment();

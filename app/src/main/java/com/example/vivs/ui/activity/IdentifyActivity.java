@@ -52,7 +52,7 @@ public class IdentifyActivity extends BaseActivity {
 
     public static final int TAKE_PHOTO = 1;
 
-public Unbinder mBind;
+    public Unbinder mBind;
     private ImageView picture;
     private Uri imageUri;
     private final String filePath = Environment.getExternalStorageDirectory() + File.separator + "output_image.jpg";
@@ -63,16 +63,16 @@ public Unbinder mBind;
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-         ReceiveMsg();
+        ReceiveMsg();
         mBind = ButterKnife.bind(IdentifyActivity.this);
-         picture=this.findViewById(R.id.img_show);
+        picture = this.findViewById(R.id.img_show);
         setOnClickListener();
     }
 
     private void ReceiveMsg() {
         IntentFilter intentFilter = new IntentFilter("MY_BROADCAST");
         instance = LocalReceiver.getInstance(IdentifyActivity.this);
-        BroadCastManager.getInstance().registerReceiver(this, instance,intentFilter);
+        BroadCastManager.getInstance().registerReceiver(this, instance, intentFilter);
     }
 
     private void requestpermissions() {
@@ -140,13 +140,13 @@ public Unbinder mBind;
         take_photo_bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("6666666666","点击");
+                Log.d("6666666666", "点击");
                 //进行拍照.调用相机
                 requestpermissions();
                 requestCamera();
-               //将照片上传
+                //将照片上传
                 setimg();
-          //     UploadPhoto(picturebase64);
+                //     UploadPhoto(picturebase64);
             }
         });
         search_history_bt.setOnClickListener(new View.OnClickListener() {
@@ -161,25 +161,25 @@ public Unbinder mBind;
         File outputImage = new File(filePath);
 
         if (!outputImage.exists()) {
-            Log.d(TAG,"这里");
+            Log.d(TAG, "这里");
         }
- // picture.setImageBitmap(BitmapFactory.decodeFile(filePath));
+        // picture.setImageBitmap(BitmapFactory.decodeFile(filePath));
     }
 
     private void UploadPhoto(String Base64Pic) {
         // Log.d(TAG,"base64----"+Base64Pic);
-        Retrofit retrofit = RetrofitManager.getInstance().getRetrofit();
+        Retrofit retrofit = RetrofitManager.getInstance(Constants.BASE_MOBILE_URL).getRetrofit();
         API api = retrofit.create(API.class);
         Call<Object> task = api.getPicResult("application/json", Base64Pic);
         task.enqueue(new Callback<Object>() {
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
-        Log.d(TAG,"response----------"+response.body());
+                Log.d(TAG, "response----------" + response.body());
             }
 
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
-                   Log.d(TAG,"ERROR----------"+t);
+                Log.d(TAG, "ERROR----------" + t);
             }
         });
 
@@ -190,23 +190,22 @@ public Unbinder mBind;
     }
 
 
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG,"requestcode--------"+requestCode);
+        Log.d(TAG, "requestcode--------" + requestCode);
         switch (requestCode) {
             case TAKE_PHOTO:
-                    try {
-                        Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
-                        byte[] bytes = bitmap2Byte(bitmap);
-                        picturebase64 = byte2Base64(bytes);
-                     UploadPhoto(picturebase64);
+                try {
+                    Bitmap bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(imageUri));
+                    byte[] bytes = bitmap2Byte(bitmap);
+                    picturebase64 = byte2Base64(bytes);
+                    UploadPhoto(picturebase64);
 
-                        //将图片解析成Bitmap对象，并把它显现出来
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    //将图片解析成Bitmap对象，并把它显现出来
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
 
                 break;
             default:
@@ -214,12 +213,14 @@ public Unbinder mBind;
         }
 
     }
+
     public static byte[] bitmap2Byte(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         //把bitmap100%高质量压缩 到 output对象里
         bitmap.compress(Bitmap.CompressFormat.JPEG, 60, outputStream);
         return outputStream.toByteArray();
     }
+
     /**
      * 将图片转成byte数组
      *
@@ -227,7 +228,7 @@ public Unbinder mBind;
      * @return Base64 String
      */
     public static String byte2Base64(byte[] imageByte) {
-        if(null == imageByte) return null;
+        if (null == imageByte) return null;
         return Base64.encodeToString(imageByte, Base64.DEFAULT);
     }
 
@@ -252,6 +253,6 @@ public Unbinder mBind;
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BroadCastManager.getInstance().unregisterReceiver(this,instance);
+        BroadCastManager.getInstance().unregisterReceiver(this, instance);
     }
 }

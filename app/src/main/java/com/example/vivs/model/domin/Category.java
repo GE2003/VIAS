@@ -1,16 +1,15 @@
 package com.example.vivs.model.domin;
 
-public class Data {
-    public int id;
-    public String title;
-    public String content;
+public class Category {
+
+    private int id;
+    private String title;
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "DataBean{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
                 '}';
     }
 
@@ -28,13 +27,6 @@ public class Data {
 
     public void setTitle(String title) {
         this.title = title;
-    }
 
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
     }
 }

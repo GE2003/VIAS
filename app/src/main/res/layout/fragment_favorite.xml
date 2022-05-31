@@ -6,6 +6,7 @@
     <TextView
             android:layout_width="wrap_content"
             android:text="favorite"
+            android:id="@+id/text_view"
             android:textSize="20sp"
             android:layout_centerInParent="true"
             android:layout_height="wrap_content"/>

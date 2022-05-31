@@ -2,7 +2,8 @@ package com.example.vivs.utils;
 
 public  class Constants {
     public  static String BASE_MOBILE_URL="https://api-wuxi-1.cmecloud.cn:8443";
-
+  public static  String  BASE_NEWS_URL= "http://114.132.79.192:9002/";
+  public static  String  BASE_TEST_URL= "http://172.16.13.138:9002/";
     public  static  String RealPhoneRecordFilePath ="/storage/self/primary/1/sina/speak.raw";
     public  static  String MoNiPhoneRecordFilePath ="/data/data/com.example.vivs/DATA/speak.raw";
     public static   String accessKey = "b79cdb40f36f4ab0a2a7852c6af0f958";

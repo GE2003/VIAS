@@ -1,6 +1,5 @@
 package com.example.vivs.ui.fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.View;
 
@@ -8,7 +7,6 @@ import android.view.View;
 import androidx.cardview.widget.CardView;
 import butterknife.BindView;
 
-import butterknife.ButterKnife;
 import com.example.vivs.Base.BaseFragment;
 import com.example.vivs.R;
 

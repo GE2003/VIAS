@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
+import android.widget.ImageView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityOptionsCompat;
@@ -18,6 +19,7 @@ public class AnimationActivity extends AppCompatActivity {
     private LottieAnimationView view;
     private boolean isLogin;
     private String TAG="AnimationActivity";
+    private ImageView logo;
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class AnimationActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
         setContentView(R.layout.activity_lottie);
         view = this.findViewById(R.id.lottie_animation);
+        logo = this.findViewById(R.id.logo);
+        logo.bringToFront();
         setAnimation();
 
     }

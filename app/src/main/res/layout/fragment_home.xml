@@ -5,19 +5,16 @@
         android:orientation="vertical"
         android:layout_height="match_parent">
     <net.lucode.hackware.magicindicator.MagicIndicator
-            android:id="@+id/home_indicator"
+            android:id="@+id/news_indicator_test"
             android:focusable="true"
-
-                   android:minWidth="130dp"
             android:layout_width="match_parent"
             android:layout_height="70dp"/>
 
 
     <androidx.viewpager.widget.ViewPager
-            android:id="@+id/home_pager"
+            android:id="@+id/view_pager_fr_test"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
-
 
     <!-- <com.google.android.material.tabs.TabLayout
                    android:id="@+id/home_indicator"
